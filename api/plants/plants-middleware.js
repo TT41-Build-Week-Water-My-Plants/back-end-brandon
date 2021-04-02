@@ -1,0 +1,28 @@
+const { getPlantById } = require("./plants-model");
+
+const validatePlantById = async (req, res, next) => {
+  try {
+    const plant = await getPlantById(req.params.id);
+    if (!plant) {
+      res
+        .status(404)
+        .json({ message: `plant with id ${req.params.id} not found` });
+    } else {
+      next();
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const checkPlantPayload = (req, res, next) => {
+  if (!req.body.nickname || !req.body.species || !req.body.h2o_frequency) {
+    res
+      .status(400)
+      .json({ message: "all fields except for image are required" });
+  } else {
+    next();
+  }
+};
+
+module.exports = { validatePlantById, checkPlantPayload };
