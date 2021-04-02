@@ -72,6 +72,7 @@ function buildToken(user) {
 
 module.exports = router;
 
+//final heroku push
 //I think this is a simple way to do an register. the used above is more secure however, making sure every field is used or else.
 
 // router.post("/register", checkUsernameTaken, (req, res) => {
