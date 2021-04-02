@@ -1,6 +1,6 @@
-const { findById } = require("../auth/auth-model");
+const { findById } = require("../auth/auth-middleware");
 
-const checkUserId = async (req, res, next) => {
+const checkUserById = async (req, res, next) => {
   try {
     const user = await findById(req.params.id);
     if (!user) {
@@ -22,4 +22,4 @@ const checkUserPayload = (req, res, next) => {
     next();
   }
 };
-module.exports = { checkUserId, checkUserPayload };
+module.exports = { checkUserById, checkUserPayload };

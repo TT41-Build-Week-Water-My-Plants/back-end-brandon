@@ -59,3 +59,5 @@ router.use((err, req, res) => {
     message: "check server inside plants",
   });
 });
+
+module.exports = router;

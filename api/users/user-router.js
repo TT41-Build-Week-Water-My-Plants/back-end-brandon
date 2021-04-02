@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const restricted = require("../restricted");
+const restricted = require("../restricted/restricted");
 const Users = require("../auth/auth-model");
 const bcrypt = require("bcryptjs");
-const { checkUserById } = require("./users-middleware");
+const { checkUserById } = require("./user-middleware");
 
 router.get("/:id", restricted, checkUserById, (req, res) => {
   Users.findById(req.params.id)
