@@ -14,7 +14,7 @@ server.use("api/users", userRouter);
 server.use("api/auth", authRouter);
 server.use("/api/plants", plantsRouter);
 
-server.get("/", (req, res) => {
+server.get("/", (req, res, next) => {
   res.status(200).json("API is running for your sanity");
 });
 

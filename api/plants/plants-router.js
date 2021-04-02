@@ -54,7 +54,7 @@ router.delete("/:id", restricted, validatePlantById, (req, res, next) => {
     .catch(next);
 });
 
-router.use((err, req, res) => {
+router.use((err, req, res, next) => {
   res.status(500).json({
     message: "check server inside plants",
   });

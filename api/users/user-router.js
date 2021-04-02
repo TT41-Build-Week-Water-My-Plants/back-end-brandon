@@ -4,6 +4,8 @@ const Users = require("../auth/auth-model");
 const bcrypt = require("bcryptjs");
 const { checkUserById } = require("./user-middleware");
 
+//need to put a get for all users
+
 router.get("/:id", restricted, checkUserById, (req, res) => {
   Users.findById(req.params.id)
     .then((user) => {
@@ -35,7 +37,7 @@ router.put("/:id", restricted, checkUserById, (req, res, next) => {
   }
 });
 
-router.use((err, req, res) => {
+router.use((err, req, res, next) => {
   res.status(500).json({
     message: "check server inside users",
   });
